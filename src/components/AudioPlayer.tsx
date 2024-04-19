@@ -58,6 +58,7 @@ const AudioPlayer: React.FC<CustomAudioPlayerProps> = ({ audioSrc }) => {
         });
 
         audioRef.current.removeEventListener("timeupdate", () => {
+          // eslint-disable-next-line react-hooks/exhaustive-deps
           setCurrentTime(audioRef.current!.currentTime);
         });
       }
@@ -65,7 +66,7 @@ const AudioPlayer: React.FC<CustomAudioPlayerProps> = ({ audioSrc }) => {
   }, []);
 
   return (
-    <div className="w-9/12 sm:w-1/2 p-4 bg-gray-100 border border-gray-200 shadow-md rounded-md sticky bottom-28 sm:bottom-4 sm:mt-7 my-5 ">
+    <div className="w-9/12 sm:w-1/2 p-4 bg-gray-400 border border-gray-400 shadow-md rounded-2xl sticky bottom-28 sm:bottom-4 sm:mt-7 my-5 ">
       <audio ref={audioRef} src={audioSrc} className="w-full" />
       <div className="flex items-center justify-between text-[12px] font-semibold">
         <button

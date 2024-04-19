@@ -1,5 +1,5 @@
 import React from "react";
-import frame from "../../assets/frame.png";
+import frame from "../../../image/coralimg.jpg";
 import { Link } from "react-router-dom";
 
 interface SurahType {
@@ -22,7 +22,7 @@ const ItemsSurah: React.FC<SurahType> = ({
   surahs,
 }) => {
 
-  
+
   return (
     <>
       {surahs.length > 0 ? (
@@ -32,10 +32,10 @@ const ItemsSurah: React.FC<SurahType> = ({
             className="flex items-center content-center px-4 py-6 shadow-sm rounded-lg bg-white hover:shadow-[0_20px_20px_-20px_rgba(68,68,68,0.50)] hover:-translate-y-1 hover:duration-[300ms] hover:cursor-pointer"
           >
             <div className="w-9 sm:w-12 rounded-full bg-opacity-75 grid place-items-center">
-              <h3 className="col-start-1 row-start-1 text-[11px] md:text-sm font-bold text-slate-500">
+              <h3 className="col-start-1 row-start-1 text-[11px] md:text-sm font-bold text-[white] z-20">
                 {nomor}
               </h3>
-              <img src={frame} alt="" className="col-start-1 row-start-1" />
+              <img src={frame} alt="" className="col-start-1 row-start-1 p-0 rounded-2xl" />
             </div>
             <div className="mx-5 grow">
               <h4 className="font-bold sm:font-semibold text-gray-700 text-sm sm:text-base ">

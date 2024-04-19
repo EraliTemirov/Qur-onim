@@ -1,5 +1,4 @@
 import React from "react";
-
 interface ErrorProps {
   error: string | null;
 }

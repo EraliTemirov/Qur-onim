@@ -5,6 +5,7 @@ import { BiDetail } from "react-icons/bi";
 import HeaderDetail from "../HeaderDetail";
 import AudioPlayer from "../AudioPlayer";
 import Footer from "../Footer";
+import Navbar from "../Navbar";
 interface SurahDetailProps {
   surahDetail: SurahDetail | null;
 }
@@ -13,6 +14,7 @@ const ItemsDetailSurat: React.FC<SurahDetailProps> = ({ surahDetail }) => {
   const [showAudio, setShowAudio] = useState(false);
   return (
     <>
+    <Navbar/>
       {surahDetail && (
         <div className="flex flex-col justify-center items-center ">
           {/* <h2>{surahDetail.tempatTurun}</h2> */}

@@ -26,10 +26,8 @@ const HeaderDetail: React.FC<{ onShow: () => void }> = ({ onShow }) => {
     return;
   };
 
-  // console.log(quranState.surahDetail.audioFull);
   return (
     <>
-      {/* modal */}
       <Modal ref={modal}>
         <div className="flex justify-between items-center">
           <div className="font-semibold ">
@@ -78,7 +76,7 @@ const HeaderDetail: React.FC<{ onShow: () => void }> = ({ onShow }) => {
           <Link to={"/"}>
             <div className="inline-flex items-center hover:text-slate-800">
               <IoChevronBack size={20} className="mr-1" />
-              Kembali
+             Back to
             </div>
           </Link>
           <div>
@@ -97,7 +95,6 @@ const HeaderDetail: React.FC<{ onShow: () => void }> = ({ onShow }) => {
           </div>
         </div>
         <hr className="h-1 text-slate-950" />
-        {/* <AudioPlayer audioSrc={quranState.surahDetail.audioFull?.["01"]} /> */}
       </div>
     </>
   );

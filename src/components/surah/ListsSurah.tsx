@@ -8,8 +8,6 @@ import Footer from "../Footer";
 
 const ListsSurah: React.FC = () => {
   const { quranState }: any = useAlquran();
-  // console.log(quranState);
-
   const filteredSurahs = quranState?.surahs.filter(
     (surah: any) =>
       surah.namaLatin

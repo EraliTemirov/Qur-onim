@@ -3,3 +3,45 @@ body {
   color-scheme: light dark;
   background-color: #f4f4f4;
 }
+.title {
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  margin-top: 20px;
+}
+
+.select {
+  margin-bottom: 20px;
+  margin-top: 12px;
+  text-align: center;
+}
+
+.mintaqa {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.card-wrapper {
+  margin-bottom: 50px;
+}
+
+.cards {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 10px;
+  text-align: center;
+}
+
+.week-wrapper {
+  display: none;
+}
+
+.today {
+  background-color: #f0f0f0;
+}
+
+.btn {
+  margin: 20px;
+}

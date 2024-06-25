@@ -1,48 +1,50 @@
-import React, { useState, useEffect } from "react";
-import logo from "../assets/logo-removebg-preview.png";
-import { Link } from 'react-router-dom';
+import React, {useState, useEffect} from 'react'
+import logo from '../assets/logo-removebg-preview.png'
+import {Link} from 'react-router-dom'
 
 const Navbar: React.FC = () => {
-  const [scrolling, setScrolling] = useState(false);
+  const [scrolling, setScrolling] = useState(false)
 
   const handleScroll = () => {
     if (window.scrollY > 50) {
-      setScrolling(true);
+      setScrolling(true)
     } else {
-      setScrolling(false);
+      setScrolling(false)
     }
-  };
+  }
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll)
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
 
   return (
     <nav
       className={`${
         scrolling
-          ? " sm:bg-white sm:shadow-[0_20px_15px_-20px_rgba(68,68,68,0.45)]"
-          : " sm:bg-transparent "
+          ? ' sm:bg-white sm:shadow-[0_20px_15px_-20px_rgba(68,68,68,0.45)]'
+          : ' sm:bg-transparent '
       }    border-1 border-gray-300  sticky sm:top-0 z-50 transition-all ease-in-out duration-300`}
     >
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-3">
-        <Link to={"/"} className="flex items-center space-x-3 rtl:space-x-reverse">
-          <img src={logo} className="w-7 sm:w-10 p-0" alt="Flowbite Logo" />
-          <span className="self-center sm:text-2xl font-semibold whitespace-nowrap text-slate-600">
+      <div className='max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-3'>
+        <Link to={'/'} className='flex items-center space-x-3 rtl:space-x-reverse'>
+          <img src={logo} className='w-7 sm:w-10 p-0' alt='Flowbite Logo' />
+          <span className='self-center sm:text-2xl font-semibold whitespace-nowrap text-slate-600'>
             Al-Quran App
           </span>
         </Link>
-       <div>
-       <Link to={"/watch"}>
-          <span className=" px-3 py-2 text-slate-600 font-medium rounded-lg hover:bg-[#ecf2ec]">Soat</span>
-        </Link>
-       </div>
+        <div>
+          <Link to={'/watch'}>
+            <span className=' px-3 py-2 text-slate-600 font-medium rounded-lg hover:bg-[#ecf2ec]'>
+              Nomoz vaqtlari
+            </span>
+          </Link>
+        </div>
       </div>
     </nav>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

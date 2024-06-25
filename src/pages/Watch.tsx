@@ -54,7 +54,7 @@ const Watch: React.FC = () => {
   }, [selectedRegion])
 
   return (
-    <div>
+    <div className='all'>
       <Navbar />
       <div className='App w-[90%] m-auto'>
         <div className='select flex justify-center gap-2'>
@@ -155,7 +155,7 @@ const Watch: React.FC = () => {
           </div>
         )}
       </div>
-      <Footer className={''} />
+      <Footer className={' '} />
     </div>
   )
 }

@@ -37,7 +37,7 @@ const Navbar: React.FC = () => {
         </Link>
         <div>
           <Link to={'/watch'}>
-            <span className=' px-3 py-2 text-slate-600 font-medium rounded-lg hover:bg-[#ecf2ec]'>
+            <span className=' px-3  text-slate-600 font-medium rounded-lg hover:bg-[#ecf2ec]'>
               Nomoz vaqtlari
             </span>
           </Link>

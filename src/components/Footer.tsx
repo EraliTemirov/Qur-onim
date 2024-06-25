@@ -10,7 +10,7 @@ const scrollToTop = () => {
 
 const Footer: React.FC<{className: string}> = () => {
   return (
-    <footer className={`w-full bottom-0 pt-8  `}>
+    <footer className={`w-full bottom-0 pt-8 `}>
       <div className=' bg-white p-7 border shadow-md md:mt-14 flex justify-between items-center'>
         <h1 className='font-semibold text-[18px] text-slate-600'>Al-Quran App</h1>
         <button

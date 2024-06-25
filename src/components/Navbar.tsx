@@ -22,13 +22,13 @@ const Navbar: React.FC = () => {
 
   return (
     <nav
-      className={`${
+      className={` Navbarr ${
         scrolling
           ? ' sm:bg-white sm:shadow-[0_20px_15px_-20px_rgba(68,68,68,0.45)]'
           : ' sm:bg-transparent '
       }    border-1 border-gray-300  sticky sm:top-0 z-50 transition-all ease-in-out duration-300`}
     >
-      <div className='max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-3'>
+      <div className=' max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-3'>
         <Link to={'/'} className='flex items-center space-x-3 rtl:space-x-reverse'>
           <img src={logo} className='w-7 sm:w-10 p-0' alt='Flowbite Logo' />
           <span className='self-center sm:text-2xl font-semibold whitespace-nowrap text-slate-600'>

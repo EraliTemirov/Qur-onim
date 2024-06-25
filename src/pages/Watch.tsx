@@ -77,9 +77,9 @@ const Watch: React.FC = () => {
           </h4>
           <Clock />
         </div>
-        <div className='card-wrapper d-flex flex-wrap justify-content-center'>
+        <div className='card-wrapper'>
           {times && (
-            <div className='flex gap-2 justify-between'>
+            <div className='flex flex-wrap gap-4 justify-center'>
               <div className='cards'>
                 <h4>Tong</h4>
                 <img src={Tahajjud} alt='Tahajjud' />

@@ -13,10 +13,8 @@ const Clock: React.FC = () => {
 
   return (
     <div className='date text-center flex items-center gap-2'>
-      <i className='bi bi-calendar4-week'></i>
       <span className='text-[18px]'>{currentTime.toLocaleDateString()}</span>
-      <span>/</span>
-      <span id='hour'>{currentTime.toLocaleTimeString()}</span>
+      <span id='hour'>{currentTime.toLocaleTimeString([], {hour12: false})}</span>
     </div>
   )
 }

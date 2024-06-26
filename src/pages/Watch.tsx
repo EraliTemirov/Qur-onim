@@ -6,7 +6,6 @@ import BomdodImage from '../image/sunrise 1.svg'
 import ShomImage from '../image/sunrise (1) 2.svg'
 import XuftonImage from '../image/moon 1.svg'
 import Clock from '../components/Clock'
-import '../App.css'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 
@@ -33,8 +32,6 @@ const regions = [
 const Watch: React.FC = () => {
   const [selectedRegion, setSelectedRegion] = useState<string>('Toshkent')
   const [times, setTimes] = useState<Times | null>(null)
-  const [weeklyTimes, setWeeklyTimes] = useState<any[]>([])
-  const [showWeekly, setShowWeekly] = useState<boolean>(false)
 
   const fetchData = async (region: string) => {
     const response = await fetch(`https://islomapi.uz/api/present/day?region=${region}`)
@@ -56,7 +53,7 @@ const Watch: React.FC = () => {
   return (
     <div className='all'>
       <Navbar />
-      <div className='App w-[90%] m-auto'>
+      <div className='App w-[90%] m-auto mb-20 mt-12'>
         <div className='select flex justify-center gap-2'>
           <h4>Hududni tanlang:</h4>
           <select
@@ -113,47 +110,6 @@ const Watch: React.FC = () => {
             </div>
           )}
         </div>
-        <button
-          className='btn btn-light text-primary week-show'
-          onClick={() => setShowWeekly(!showWeekly)}
-        >
-          {showWeekly ? 'Kunlik vaqtni ko`rish' : 'Haftalik vaqtni ko`rish'}
-        </button>
-        {showWeekly && (
-          <div className='week-wrapper w-75 mx-auto bg-light'>
-            <table className='table table-striped'>
-              <thead>
-                <tr>
-                  <th>Hafta kuni</th>
-                  <th>Sana</th>
-                  <th>Tong</th>
-                  <th>Quyosh</th>
-                  <th>Peshin</th>
-                  <th>Asr</th>
-                  <th>Shom</th>
-                  <th>Xufton</th>
-                </tr>
-              </thead>
-              <tbody>
-                {weeklyTimes.map((day, index) => (
-                  <tr
-                    key={index}
-                    className={new Date(day.date).getDate() === new Date().getDate() ? 'today' : ''}
-                  >
-                    <td>{day.weekday}</td>
-                    <td>{day.date.substring(0, 10)}</td>
-                    <td>{day.times.tong_saharlik}</td>
-                    <td>{day.times.quyosh}</td>
-                    <td>{day.times.peshin}</td>
-                    <td>{day.times.asr}</td>
-                    <td>{day.times.shom_iftor}</td>
-                    <td>{day.times.hufton}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
       </div>
       <Footer className={' '} />
     </div>

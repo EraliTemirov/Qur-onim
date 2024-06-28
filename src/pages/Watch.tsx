@@ -5,9 +5,9 @@ import PeshinImage from '../image/sun 1.svg'
 import BomdodImage from '../image/sunrise 1.svg'
 import ShomImage from '../image/sunrise (1) 2.svg'
 import XuftonImage from '../image/moon 1.svg'
-import Clock from '../components/Clock'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+// import Clock from '../components/Clock'
 
 export interface Times {
   tong_saharlik: string
@@ -32,23 +32,44 @@ const regions = [
 const Watch: React.FC = () => {
   const [selectedRegion, setSelectedRegion] = useState<string>('Toshkent')
   const [times, setTimes] = useState<Times | null>(null)
+  const [currentTime, setCurrentTime] = useState<Date>(new Date())
+  const ctConverted = currentTime.toLocaleTimeString([], {hour12: false})
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentTime(new Date())
+    }, 1000)
+
+    return () => clearInterval(intervalId)
+  }, [])
 
   const fetchData = async (region: string) => {
     const response = await fetch(`https://islomapi.uz/api/present/day?region=${region}`)
     const data = await response.json()
+    console.log(data)
+
     setTimes(data.times)
   }
 
   const fetchWeeklyData = async (region: string) => {
     const response = await fetch(`https://islomapi.uz/api/present/week?region=${region}`)
     const data = await response.json()
-    setWeeklyTimes(data)
+    // setWeeklyTimes(data)
   }
 
   useEffect(() => {
     fetchData(selectedRegion)
     fetchWeeklyData(selectedRegion)
   }, [selectedRegion])
+
+  function check(pre: string | undefined, next: string | undefined) {
+    if (pre && next) {
+      if (pre <= ctConverted && ctConverted <= next) {
+        return 'cards w-[280px] bg-gray-400'
+      }
+    }
+    return 'cards'
+  }
 
   return (
     <div className='all'>
@@ -72,7 +93,11 @@ const Watch: React.FC = () => {
           <h4 className='text-center'>
             Mintaqa: <span className='min'>{selectedRegion}</span>
           </h4>
-          <Clock />
+          <div className='date text-center flex items-center gap-2'>
+            <span className='text-[18px]'>{currentTime.toLocaleDateString()}</span>
+            <span id='hour'>{ctConverted}</span>
+          </div>
+          {/* <Clock /> */}
         </div>
         <div className='card-wrapper'>
           {times && (
@@ -82,17 +107,17 @@ const Watch: React.FC = () => {
                 <img src={Tahajjud} alt='Tahajjud' />
                 <h4 className='time'>{times.tong_saharlik}</h4>
               </div>
-              <div className='cards'>
+              <div className={check(times?.tong_saharlik, times?.quyosh)}>
                 <h4>Quyosh</h4>
                 <img src={BomdodImage} alt='Bomdod' />
                 <h4 className='time'>{times.quyosh}</h4>
               </div>
-              <div className='cards'>
+              <div className={check(times?.quyosh, times?.peshin)}>
                 <h4>Peshin</h4>
                 <img src={PeshinImage} alt='Peshin' />
                 <h4 className='time'>{times.peshin}</h4>
               </div>
-              <div className='cards'>
+              <div className='cards '>
                 <h4>Asr</h4>
                 <img src={AsrImage} alt='Asr' />
                 <h4 className='time'>{times.asr}</h4>

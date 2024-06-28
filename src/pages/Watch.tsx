@@ -102,7 +102,7 @@ const Watch: React.FC = () => {
         <div className='card-wrapper'>
           {times && (
             <div className='flex flex-wrap gap-4 justify-center'>
-              <div className='cards'>
+              <div className={check(times?.hufton, times?.tong_saharlik)}>
                 <h4>Tong</h4>
                 <img src={Tahajjud} alt='Tahajjud' />
                 <h4 className='time'>{times.tong_saharlik}</h4>
@@ -117,17 +117,17 @@ const Watch: React.FC = () => {
                 <img src={PeshinImage} alt='Peshin' />
                 <h4 className='time'>{times.peshin}</h4>
               </div>
-              <div className='cards '>
+              <div className={check(times?.peshin, times?.asr)}>
                 <h4>Asr</h4>
                 <img src={AsrImage} alt='Asr' />
                 <h4 className='time'>{times.asr}</h4>
               </div>
-              <div className='cards'>
+              <div className={check(times?.asr, times?.shom_iftor)}>
                 <h4>Shom</h4>
                 <img src={ShomImage} alt='Shom' />
                 <h4 className='time'>{times.shom_iftor}</h4>
               </div>
-              <div className='cards'>
+              <div className={check(times?.shom_iftor, times?.hufton)}>
                 <h4>Xufton</h4>
                 <img src={XuftonImage} alt='Xufton' />
                 <h4 className='time'>{times.hufton}</h4>

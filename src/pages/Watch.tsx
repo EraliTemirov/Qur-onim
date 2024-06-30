@@ -7,7 +7,6 @@ import ShomImage from '../image/sunrise (1) 2.svg'
 import XuftonImage from '../image/moon 1.svg'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-// import Clock from '../components/Clock'
 
 export interface Times {
   tong_saharlik: string
@@ -65,11 +64,22 @@ const Watch: React.FC = () => {
   function check(pre: string | undefined, next: string | undefined) {
     if (pre && next) {
       if (pre <= ctConverted && ctConverted <= next) {
-        return 'cards w-[280px] bg-gray-400'
+        return 'cards w-[280px] bg-gray-300'
       }
     }
     return 'cards'
   }
+
+  const prayerTimes = times
+    ? [
+        {name: 'Tong', time: times.tong_saharlik, image: Tahajjud, next: times.quyosh},
+        {name: 'Quyosh', time: times.quyosh, image: BomdodImage, next: times.peshin},
+        {name: 'Peshin', time: times.peshin, image: PeshinImage, next: times.asr},
+        {name: 'Asr', time: times.asr, image: AsrImage, next: times.shom_iftor},
+        {name: 'Shom', time: times.shom_iftor, image: ShomImage, next: times.hufton},
+        {name: 'Xufton', time: times.hufton, image: XuftonImage, next: times.tong_saharlik},
+      ]
+    : []
 
   return (
     <div className='all'>
@@ -97,41 +107,17 @@ const Watch: React.FC = () => {
             <span className='text-[18px]'>{currentTime.toLocaleDateString()}</span>
             <span id='hour'>{ctConverted}</span>
           </div>
-          {/* <Clock /> */}
         </div>
         <div className='card-wrapper'>
-          {times && (
+          {prayerTimes.length > 0 && (
             <div className='flex flex-wrap gap-4 justify-center'>
-              <div className={check(times?.hufton, times?.tong_saharlik)}>
-                <h4>Tong</h4>
-                <img src={Tahajjud} alt='Tahajjud' />
-                <h4 className='time'>{times.tong_saharlik}</h4>
-              </div>
-              <div className={check(times?.tong_saharlik, times?.quyosh)}>
-                <h4>Quyosh</h4>
-                <img src={BomdodImage} alt='Bomdod' />
-                <h4 className='time'>{times.quyosh}</h4>
-              </div>
-              <div className={check(times?.quyosh, times?.peshin)}>
-                <h4>Peshin</h4>
-                <img src={PeshinImage} alt='Peshin' />
-                <h4 className='time'>{times.peshin}</h4>
-              </div>
-              <div className={check(times?.peshin, times?.asr)}>
-                <h4>Asr</h4>
-                <img src={AsrImage} alt='Asr' />
-                <h4 className='time'>{times.asr}</h4>
-              </div>
-              <div className={check(times?.asr, times?.shom_iftor)}>
-                <h4>Shom</h4>
-                <img src={ShomImage} alt='Shom' />
-                <h4 className='time'>{times.shom_iftor}</h4>
-              </div>
-              <div className={check(times?.shom_iftor, times?.hufton)}>
-                <h4>Xufton</h4>
-                <img src={XuftonImage} alt='Xufton' />
-                <h4 className='time'>{times.hufton}</h4>
-              </div>
+              {prayerTimes.map((prayer, index) => (
+                <div key={index} className={check(prayer.time, prayer.next)}>
+                  <h4>{prayer.name}</h4>
+                  <img src={prayer.image} alt={prayer.name} />
+                  <h4 className='time'>{prayer.time}</h4>
+                </div>
+              ))}
             </div>
           )}
         </div>
